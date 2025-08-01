@@ -1,5 +1,6 @@
 service:
   port: ":8080"
+  secretJwt: "secretjwtmusthaveatleast256bitslongtovalid"
 
 database:
   dataSourceName: "root:2secret@tcp(localhost:3307)/db-simple-forum?parseTime=true"

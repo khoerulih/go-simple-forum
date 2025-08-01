@@ -7,4 +7,6 @@
 - Go
 - Gin (http framework for golang)
 - Go Viper (library for config management)
+- Golang JWT
+- Zerolog (logger)
 - MySQL
