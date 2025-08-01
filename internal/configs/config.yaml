@@ -2,4 +2,4 @@ service:
   port: ":8080"
 
 database:
-  dataSourceName: "root:2secret@tcp(localhost:3307)/db-simple-forum"
+  dataSourceName: "root:2secret@tcp(localhost:3307)/db-simple-forum?parseTime=true"

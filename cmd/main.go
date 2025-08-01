@@ -7,6 +7,7 @@ import (
 	"github.com/khoerulih/go-simple-forum/internal/configs"
 	"github.com/khoerulih/go-simple-forum/internal/handler/memberships"
 	membershipRepo "github.com/khoerulih/go-simple-forum/internal/repository/memberships"
+	membershipSvc "github.com/khoerulih/go-simple-forum/internal/service/memberships"
 	"github.com/khoerulih/go-simple-forum/pkg/internalsql"
 )
 
@@ -36,9 +37,11 @@ func main() {
 		log.Fatal("Gagal inisiasi database: ", err)
 	}
 
-	_ = membershipRepo.NewRepository(db)
+	membershipRepository := membershipRepo.NewRepository(db)
 
-	membershipsHandler := memberships.NewHandler(r)
+	membershipService := membershipSvc.NewService(membershipRepository)
+
+	membershipsHandler := memberships.NewHandler(r, membershipService)
 	membershipsHandler.RegisterRoute()
 
 	r.Run(cfg.Service.Port)
