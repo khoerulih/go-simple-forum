@@ -5,7 +5,8 @@ go 1.24.5
 require (
 	github.com/gin-gonic/gin v1.10.1
 	github.com/go-sql-driver/mysql v1.9.3
-	github.com/golang-jwt/jwt v3.2.2+incompatible
+	github.com/golang-jwt/jwt/v5 v5.3.0
+	github.com/rs/zerolog v1.34.0
 	github.com/spf13/viper v1.20.1
 	golang.org/x/crypto v0.40.0
 )
@@ -31,7 +32,6 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.4 // indirect
-	github.com/rs/zerolog v1.34.0 // indirect
 	github.com/sagikazarmark/locafero v0.7.0 // indirect
 	github.com/sourcegraph/conc v0.3.0 // indirect
 	github.com/spf13/afero v1.12.0 // indirect

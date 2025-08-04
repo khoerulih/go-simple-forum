@@ -32,3 +32,26 @@ func AuthMiddleware() gin.HandlerFunc {
 		ctx.Next()
 	}
 }
+
+func AuthRefreshMiddleware() gin.HandlerFunc {
+	secretKey := configs.Get().Service.SecretJWT
+	return func(ctx *gin.Context) {
+		token := ctx.Request.Header.Get("Authorization")
+
+		token = strings.TrimSpace(token)
+		if token == "" {
+			ctx.AbortWithError(http.StatusUnauthorized, errors.New("missing token"))
+			return
+		}
+
+		userID, username, err := jwt.ValidateTokenWithoutExpiry(token, secretKey)
+		if err != nil {
+			ctx.AbortWithError(http.StatusUnauthorized, err)
+			return
+		}
+
+		ctx.Set("userID", userID)
+		ctx.Set("username", username)
+		ctx.Next()
+	}
+}
